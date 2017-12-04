@@ -22,22 +22,14 @@ ActiveRecord::Schema.define(version: 20171204000350) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "fake_answer_ones", force: :cascade do |t|
-    t.string   "fake_answer_two"
-    t.string   "correct_answer"
-    t.integer  "question_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
   create_table "questions", force: :cascade do |t|
     t.string   "text"
     t.integer  "user_id"
     t.integer  "correct_answer_id"
     t.integer  "points"
-    t.string   "tags"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "tags",              default: [],              array: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,6 +46,9 @@ ActiveRecord::Schema.define(version: 20171204000350) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "username"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

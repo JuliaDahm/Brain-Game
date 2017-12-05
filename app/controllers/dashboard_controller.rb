@@ -1,11 +1,24 @@
 class DashboardController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:index]
+
   def index
+    @users = User.all
+    @name = current_user.name
+    @questions = current_user.questions.all
+    @score = current_user.score
+    # @scores = @users.scores.sort.take(5)
+  end
+
+  def play
+  end
+
+  def new
+  end
+
+  def create
   end
 
   def show
-    @users = User.all
-    @user = current_user
   end
 
   def create

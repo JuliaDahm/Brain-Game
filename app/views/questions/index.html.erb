@@ -1,0 +1,10 @@
+<div class="toggle">
+  <h1>Question: </h1>
+  <h2><%= @trivia.text %></h2>
+</div>
+<hr />
+<h3>Your Answer:</h3>
+<input type="text" name="user_answer" value="">
+<button onClick='checkAnswer'>Submit</button>
+<br />
+<%= link_to 'Home', root_path %>

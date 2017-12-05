@@ -1,11 +1,10 @@
 class CreateQuestions < ActiveRecord::Migration[5.0]
   def change
     create_table :questions do |t|
-      t.string :text
+      t.text :text
+      t.string :answer
+      t.integer :points, :default => 3
       t.integer :user_id
-      t.integer :correct_answer_id
-      t.integer :points
-      t.string :tags, array: true, default: []
 
       t.timestamps
     end

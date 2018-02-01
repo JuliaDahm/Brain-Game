@@ -3,7 +3,6 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable,
   :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :questions
 
   def self.from_omniauth(facebook_info)
     where(provider: facebook_info.provider, uid: facebook_info.uid).first_or_create do |user|

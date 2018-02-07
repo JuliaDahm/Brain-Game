@@ -3,12 +3,12 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    # user = User.find(params[:user_id])
     @questions = Question.all
     # @scores = user.score.sort.take(5)
     # @trivia = @questions.sample
     @question = @questions.sample
     @answers = [@question.option1, @question.option2, @question.correct_ans].sort_by{rand}
+    @user = current_user.score
   end
 
   def show

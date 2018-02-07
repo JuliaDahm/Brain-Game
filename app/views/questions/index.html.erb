@@ -5,7 +5,7 @@
 <hr />
   <% @answers.each do |answer| %>
   <!-- <input type="radio" name="user_answer" value=""> -->
-    <button onClick='checkAnswer'><%= answer %></button>
+    <button onClick='checkAnswer' name='user_answer'><%= answer %></button>
   <% end %>
 <br />
 <%= link_to 'Home', root_path %>

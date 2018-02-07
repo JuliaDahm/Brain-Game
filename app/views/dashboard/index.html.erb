@@ -5,12 +5,15 @@
   <h2>Hi, <%= current_user.email.split('@')[0] %></h2>
 <% end %>
 <h3>Current Score: <%= current_user.score %></h3>
-<%= button_to 'Create Questions', new_user_question_path(current_user.id) %>
-<%= button_to 'Answer Questions', user_questions_path(current_user.id) %>
+<%= link_to 'Create Questions', new_question_path %>
+<%= link_to 'Answer Questions', questions_path %>
+<%= link_to 'Scores', scores_path %>
 <% @questions.each do |question| %>
   <p>
     <%= question.text %>
-    <%= question.answer %>
+    <%= question.option1 %>
+    <%= question.option2 %>
+    <%= question.correct_ans %>
   <p>
 <% end %>
 <hr />

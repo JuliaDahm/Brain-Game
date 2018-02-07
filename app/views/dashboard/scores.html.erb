@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+  <% if user.username != nil %>
+    <p><%= user.username %></p>
+  <% else %>
+    <p><%= user.name %></p>
+  <% end %>
+  <p><%= user.score %></p>
+<% end %>

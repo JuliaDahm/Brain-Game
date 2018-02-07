@@ -4,32 +4,13 @@ class DashboardController < ApplicationController
   def index
     @users = User.all
     @name = current_user.name
-    @questions = current_user.questions.all
-    @score = current_user.score
+    @questions = Question.all
     # @scores = @users.scores.sort.take(5)
   end
 
-  def play
+  def scores
+    @users = User.all
+    @score = current_user.score
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def show
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 end

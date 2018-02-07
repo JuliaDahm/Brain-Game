@@ -1,7 +1,11 @@
-<%= simple_form_for @question, url: user_questions_path(current_user) do |f| %>
+<%= simple_form_for @question, url: questions_path, method: :create do |f| %>
   <%= f.label :content, "Question:" %>
   <%= f.text_area :text %>
-  <%= f.label :content, "Answer" %>
-    <%= f.text_field :answer %>
+  <%= f.label :content, "Incorrect Answer 1" %>
+    <%= f.text_field :option1 %>
+  <%= f.label :content, "Incorrect Answer 2" %>
+    <%= f.text_field :option2 %>
+  <%= f.label :content, "Correct Answer" %>
+    <%= f.text_field :correct_ans %>
   <%= f.submit %>
 <% end %>

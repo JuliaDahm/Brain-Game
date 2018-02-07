@@ -1,12 +1,14 @@
 class QuestionsController < ApplicationController
-  before_action :question, except: [:index, :create]
+  before_action :question, except: [:index, :create, :new]
   before_action :authenticate_user!, only: [:index]
 
   def index
-    user = User.find(params[:user_id])
-    @questions = user.questions.all
+    # user = User.find(params[:user_id])
+    @questions = Question.all
     # @scores = user.score.sort.take(5)
-    @trivia = @questions.sample
+    # @trivia = @questions.sample
+    @question = @questions.sample
+    @answers = [@question.option1, @question.option2, @question.correct_ans].sort_by{rand}
   end
 
   def show
@@ -14,14 +16,14 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = current_user.questions.new
+    @question = Question.new
   end
 
   def create
-    @question = current_user.questions.build(question_params)
+    @question = Question.create(question_params)
     if @question.save
       flash[:notice] = "Question successfully created"
-      redirect_to new_user_question_path
+      redirect_to new_question_path
     else
       render :new
     end
@@ -29,12 +31,12 @@ class QuestionsController < ApplicationController
 
   private
 
-    def question_params
-      params.require(:question).permit(:text, :answer)
+    def question
+      @question = Question.find(params[:id])
     end
 
-    def question
-      @question = current_user.questions.find(params[:id])
+    def question_params
+      params.require(:question).permit(:text, :option1, :option2, :correct_ans)
     end
 
 end

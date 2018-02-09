@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => [:index, :show, :new, :create]
   #need to remove and replace with solution that alows verification
   before_action :question, except: [:index, :create, :new]
   before_action :authenticate_user!, only: [:index]

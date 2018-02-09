@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :dashboard
 
   get '/scores', :to => 'dashboard#scores'
+  get '/answer', :to => 'questions#check_answer'
+  # get '/create_question', :to => 'questions'
   root 'dashboard#index'
 
 end

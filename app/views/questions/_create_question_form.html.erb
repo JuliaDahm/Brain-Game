@@ -1,4 +1,4 @@
-<%= simple_form_for @question, url: questions_path, method: :create do |f| %>
+<%= form_for @question, url: questions_path, id: 'create-question-form', method: :create do |f| %>
   <%= f.label :content, "Question:" %>
   <%= f.text_area :text %>
   <%= f.label :content, "Incorrect Answer 1" %>
@@ -9,3 +9,5 @@
     <%= f.text_field :correct_ans %>
   <%= f.submit %>
 <% end %>
+
+<%= link_to 'Home', root_path %>

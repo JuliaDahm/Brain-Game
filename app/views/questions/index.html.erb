@@ -9,3 +9,12 @@
   <% end %>
 <br />
 <%= link_to 'Home', root_path %>
+<%= link_to 'test', answer_path, remote: true %>
+
+
+<div id="output">
+</div>
+
+<div id="form"></div>
+
+<%= render 'answer_question_form' %>

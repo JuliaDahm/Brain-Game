@@ -1,0 +1,6 @@
+<%= simple_form_for @question, remote: true, url: question_path(@question),
+                               id: 'answer-form', method: :patch do |f| %>
+  <%= f.label :content, "User answer" %>
+    <%= f.select :user_ans, @answers.map{|a| [a]} %>
+  <%= f.submit %>
+<% end %>
